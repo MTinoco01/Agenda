@@ -1,4 +1,4 @@
-# Agenda — sistema de agendamento
+# Agenda |sistema de agendamento|
 
 Profissionais (barbeiro, personal, clinica...) cadastram servicos e horarios de atendimento;
 clientes escolhem um horario livre e agendam.
@@ -66,21 +66,3 @@ backend/src/main/java/br/com/agenda/
 | PATCH | `/api/agendamentos/{id}/concluir` | profissional | Marca como concluido |
 
 Rotas protegidas exigem o header `Authorization: Bearer <token>`.
-
-## Decisoes que valem estudar
-
-- **Sem horario duplicado, mesmo sob concorrencia:** o service faz uma checagem amigavel, mas a
-  garantia real e a constraint `EXCLUDE USING gist` em `V1__schema_inicial.sql`. Se duas requisicoes
-  chegarem juntas, o banco recusa a segunda e a API responde `409`.
-- **Lock otimista** (`@Version`) em `Agendamento` para alteracoes concorrentes de status.
-- **Logica pura isolada:** `CalculadoraDeHorarios` nao conhece banco nem Spring, por isso e testada
-  com testes unitarios simples.
-- **Fuso horario:** tudo e tratado como horario de Brasilia (`America/Sao_Paulo`).
-
-## Proximos passos
-
-- [x] Frontend React (login, escolha de profissional/servico/horario, painel do profissional)
-- [ ] Testes de integracao com Testcontainers
-- [ ] Bloqueios pontuais (folgas, feriados)
-- [ ] E-mail de confirmacao e lembrete (Spring Mail + `@Scheduled`)
-- [ ] Antecedencia minima e politica de cancelamento

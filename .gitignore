@@ -1,0 +1,26 @@
+# Backend (Maven)
+backend/target/
+
+# Frontend (Node/Vite)
+frontend/node_modules/
+frontend/dist/
+
+# Variaveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Contas de teste do ambiente local
+dados-de-teste.md
+
+# Editores e ferramentas locais
+.vscode/
+.idea/
+*.iml
+.claude/
+.github/modernize/
+
+# Sistema operacional e logs
+.DS_Store
+Thumbs.db
+*.log

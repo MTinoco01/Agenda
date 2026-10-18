@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: agenda-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/agenda}
+    username: ${DB_USER:agenda}
+    password: ${DB_PASSWORD:agenda}
+  jpa:
+    # O schema e responsabilidade do Flyway; o Hibernate so confere se bate
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: America/Sao_Paulo
+  flyway:
+    enabled: true
+
+app:
+  jwt:
+    # Em producao, defina JWT_SECRET com pelo menos 32 caracteres
+    secret: ${JWT_SECRET:troque-este-segredo-de-desenvolvimento-com-32+-chars}
+    expiracao-minutos: 120
+  agenda:
+    # Intervalo entre horarios oferecidos ao cliente
+    intervalo-minutos: 30
+  cors:
+    origens: ${CORS_ORIGENS:http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
